@@ -47,6 +47,10 @@ module Jekyll
 
     def payload
       # site_payload is an instance of UnifiedPayloadDrop. See https://git.io/v5ajm
+      defaultLang = context.registers[:site].site_data.defaultLang
+      lang = context.registers[:page].lang || defaultLang
+      puts "LANG " + String(lang)
+
       Jekyll::Utils.deep_merge_hashes(
         context.registers[:site].site_payload,
         "page"      => context.registers[:page],
